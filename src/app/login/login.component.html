@@ -1,0 +1,59 @@
+<mat-grid-list cols="1" >
+<!-- <mat-grid-list [cols]="breakpoint" rowHeight="2:2" (window:resize)="onResize($event)">   -->
+    <!-- <mat-grid-tile>
+        <app-stats></app-stats>
+    </mat-grid-tile> -->
+    <!-- <mat-grid-tile> -->
+      <!-- <div class="alert alert-warning" *ngIf='invalidLogin'>{{errmessage}}</div>
+      <div>
+        User Name : <input type="text" name="username" [(ngModel)]="username">
+        Password  : <input type="password" name="password" [(ngModel)]="password">
+        <button (click)=handleLogin() class="btn btn-success">Login</button>
+      </div> -->
+      <!-- <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="" value="Sushi">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="" value="Sushi">
+        </mat-form-field>
+      </form> -->
+      <app-register></app-register>
+    <!-- </mat-grid-tile> -->
+  </mat-grid-list>
+  <hr>
+  <mat-grid-list cols="1">
+    <!-- <mat-grid-tile>
+        <img mat-card-image src="https://www.thecognizant.com/site/assets/files/1126/outreach-e1519135376902.1200x450.jpg" alt="COGNIZANT OUTReach">
+    </mat-grid-tile> -->
+    <!-- <mat-grid-tile> -->
+      <!-- <mat-grid-tile-header>LOGIN</mat-grid-tile-header> -->
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form class="example-form">
+            <table class="example-full-width-v2" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field class="example-full-width-v2" appearance="outline">
+                  <input matInput placeholder="Employee ID"  [(ngModel)]="uid" type="uid" name="uid" required>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+              <td><mat-form-field class="example-full-width-v2" appearance="outline">
+                <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+              </mat-form-field></td>
+            </tr></table>
+          </form>
+          <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button (click)="handleLogin()" color="primary">Login</button>
+        </mat-card-actions>
+      </mat-card>
+    <!-- </mat-grid-tile> -->
+</mat-grid-list>
+<!-- User Name : {{username}} -->

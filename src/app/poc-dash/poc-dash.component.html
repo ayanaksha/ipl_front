@@ -1,0 +1,135 @@
+<p>
+  Welcome {{ this.userData.empname }}
+  {{ this.message }}
+</p>
+<mat-tab-group>
+  <mat-tab label="Dashboard"> POC Dashboard 
+    <mat-grid-list cols="2" rowHeight="1:1">
+      <mat-grid-tile>
+          <app-stats></app-stats>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <!-- <input ng2FileSelect type="file" accept=".xlsx" [uploader]="uploader"/> -->
+        <!-- <p>!! Download Sample Upload Excel !!</p> -->
+        <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
+        <button type="button" class="btn btn-info" (click)="Upload()" >Upload</button>
+      </mat-grid-tile>
+      <!-- <mat-grid-tile>
+          <mat-accordion>
+            
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  This is the expansion 1 title
+                </mat-expansion-panel-header>
+            
+                This the expansion 1 content
+            
+              </mat-expansion-panel>
+            
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  This is the expansion 2 title
+                </mat-expansion-panel-header>
+            
+                This the expansion 2 content
+            
+              </mat-expansion-panel>
+            
+            </mat-accordion>
+      </mat-grid-tile> -->
+    </mat-grid-list>
+    <mat-divider [inset]="true"></mat-divider>
+    <app-eventreg></app-eventreg>
+    <!-- <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-tile>
+        <app-eventreg></app-eventreg>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-grid-tile-header>LOGIN</mat-grid-tile-header>
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>Login</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <form class="example-form">
+              <table class="example-full-width-v2" cellspacing="0">
+                <tr>
+                  <td>
+                    <mat-form-field class="example-full-width-v2">
+                    <input matInput placeholder="Employee ID" [(ngModel)]="empid" name="empid" required>
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                <td><mat-form-field class="example-full-width-v2">
+                  <input matInput placeholder="Password" [(ngModel)]="password"type="password" name="password" required>
+                </mat-form-field></td>
+              </tr></table>
+            </form>
+            <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button (click)="handleLogin()" color="primary">Login</button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+  </mat-grid-list> -->
+  </mat-tab>
+  <mat-tab label="Created Events"> 
+      <!-- <app-event-dash></app-event-dash> -->
+        <mat-card>
+        <table>
+          <tbody>
+            <tr>
+              <td>Download Events Data</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><button mat-raised-button (click)="exportAsXLSX()" color="primary">Download</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card>
+      <div class="container">
+        <table class="table">
+          <!-- <caption>Events</caption> -->
+          <thead>
+            <tr>
+              <th>POC Name</th>
+              <th>Event Name</th>
+              <th>Category</th>
+              <th>Venue Requirement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let event of events">
+              <!-- <tr>   -->
+              <td>{{ event.pocName }}</td>
+              <td>{{ event.eventName }}</td>
+              <td>{{ event.category }}</td>
+              <td>{{ event.volunteersReq }}</td>
+              <!-- <td><button mat-raised-button (click)="handleLogin()" color="primary">Login</button></td> -->
+              <!-- activityType: string;
+              boardingPoints: string;
+              category: string;
+              council: string;
+              dropPoints: string;
+              endTime: string;
+              eventDate: string;
+              eventDesc: string;
+              eventID: number;
+              eventName: string;
+              livesTouched: string;
+              location: string;
+              pocID: number;
+              pocName: string;
+              startTime: string;
+              status: string;
+              venueAddress: string;
+              volunteersReq: string; -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </mat-tab>
+</mat-tab-group>

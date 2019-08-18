@@ -1,0 +1,44 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div>
+      <!-- <a href="http://localhost:4200/" class="navbar-brand">OUTREACH Volunteering Marathon</a> -->
+      <h2 *ngIf="authentication.isUserLoggedIn()" class="navbar-brand">Savings Pocket</h2>
+      <h2><a *ngIf="!authentication.isUserLoggedIn()" routerLink="/login" class="navbar-brand">Savings Pocket</a></h2>
+    </div>
+    <ul class="navbar-nav">
+        <!-- <li><a *ngIf="authentication.isUserLoggedIn()" routerLink="/login" class="nav-link">Home</a></li> -->
+        <li><a *ngIf="authentication.isPOCLoggedIn()" routerLink="/pocdash" class="nav-link">POC DashBoard</a></li>
+        <li><a *ngIf="authentication.isVolunteerLoggedIn()" routerLink="/volunteerdash" class="nav-link">Volunteer DashBoard</a></li>
+    </ul>
+    <ul class="navbar-nav navbar-collapse justify-content-end">
+        <li><a *ngIf="!authentication.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+        <li><a *ngIf="authentication.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
+    </ul>
+  </nav>
+</header>
+<!-- <mat-toolbar color="primary">
+  <mat-toolbar-row>
+  <span>My First App</span>
+      <span class="example-fill-remaining-space"></span>
+      <span class="align-center"></span>
+      <span class="example-spacer"></span>
+      <button mat-button>About</button>
+      <button mat-button>Contact</button>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span>Redial</span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon>voicemail</mat-icon>
+      <span>Check voicemail</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span>Disable alerts</span>
+    </button>
+  </mat-menu>
+   </mat-toolbar-row> -->

@@ -1,0 +1,82 @@
+<!-- <h1>Welcome ! {{ username }} </h1> -->
+<!-- <app-volunteer></app-volunteer> -->
+<!-- <div class="container">
+    <a routerLink = '/volunteer'>click here</a> to look at the complete list outreach event to register from the Opportunities listed
+</div> -->
+<!-- <div class="container">
+    Click here to get customized contents for you .
+    <button (click)="getmsg()" class="btn btn-success">Check</button>
+</div> -->
+<!-- <div class="container">
+    Click here to get customized contents for you .
+    <button (click)="getmsgwithparam()" class="btn btn-success">Check</button>
+</div>
+<div class="container">
+    Response Message from Service .....
+    {{ responseMsg }}
+</div> -->
+
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="example-form">
+        <table class="example-full-width" cellspacing="0">
+            
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+
+                    <input matInput placeholder="Userid" [(ngModel)]="uid" type="uid" name="uid" required>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <!-- <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                    <input matInput placeholder="ID" [(ngModel)]="id" type="id" name="id" required>
+                    </mat-form-field>
+                </td>
+            </tr> -->
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Password" [(ngModel)]="password1" type="password" name="password" required>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <!-- <td>
+                    <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Role" [(ngModel)]="role" type="role" name="id" required>
+                    </mat-form-field>
+                </td> -->
+                <td>
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Role</mat-label>
+                      <mat-select [(value)]="role">
+                        <mat-option>None</mat-option>
+                        <mat-option value="User">User</mat-option>
+                        <mat-option value="RM">RM</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Location" [(ngModel)]="location" type="location" name="location" required>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+        </form>
+        <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="handleRegistration()" color="primary">Register</button>
+        <!-- <button mat-raised-button (click)="getmsg()" color="primary">Register</button> -->
+    </mat-card-actions>
+</mat-card>      
+

@@ -1,0 +1,168 @@
+<!-- <mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Personal data
+      </mat-panel-title> -->
+      <!-- <mat-panel-description>
+        Type your name and age
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <input matInput placeholder="First name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Age">
+    </mat-form-field>
+  </mat-expansion-panel>
+</mat-accordion> -->
+
+
+<mat-card class="example-card">
+  <mat-card-header>
+      <mat-card-title>Register Event</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+      <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+          <tr>
+              <td>
+                  <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Boarding Point" [(ngModel)]="boardingpoint" name="boardingpoint" required>
+                  </mat-form-field>
+              </td>
+          </tr>
+          <tr>
+              <!-- <td>
+                  <mat-form-field class="example-full-width">
+                  <input matInput placeholder="category" [(ngModel)]="category" type="category" name="category" required>
+                  </mat-form-field>
+              </td> -->
+              <td>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Category</mat-label>
+                  <mat-select [(value)]="category">
+                    <mat-option>None</mat-option>
+                    <mat-option value="Education">Education</mat-option>
+                    <mat-option value="Donation">Donation</mat-option>
+                    <mat-option value="Community">Community</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <mat-form-field class="example-full-width">
+                  <input matInput placeholder="council" [(ngModel)]="council" type="council" name="council" required>
+                  </mat-form-field>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <mat-form-field class="example-full-width">
+                  <input matInput placeholder="dropPoints" [(ngModel)]="dropPoints" type="dropPoints" name="dropPoints" required>
+                  </mat-form-field>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <mat-form-field class="example-full-width">
+                  <input matInput placeholder="endTime" [(ngModel)]="endTime" type="password" name="id" required>
+                  </mat-form-field>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <mat-form-field class="example-full-width">
+                  <input matInput placeholder="eventDate" [(ngModel)]="eventDate" type="eventDate" name="eventDate" required>
+                  </mat-form-field>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <mat-form-field class="example-full-width">
+                  <input matInput placeholder="eventDesc" [(ngModel)]="eventDesc" type="eventDesc" name="eventDesc" required>
+                  </mat-form-field>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <mat-form-field class="example-full-width">
+                  <input matInput placeholder="eventID" [(ngModel)]="eventID" type="eventID" name="eventID" required>
+                  </mat-form-field>
+              </td>
+          </tr>
+          <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                <input matInput placeholder="eventName" [(ngModel)]="eventName" type="eventName" name="eventName" required>
+                </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                <input matInput placeholder="livesTouched" [(ngModel)]="livesTouched" type="livesTouched" name="livesTouched" required>
+                </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                <input matInput placeholder="location" [(ngModel)]="location" type="location" name="location" required>
+                </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                <input matInput placeholder="pocID" [(ngModel)]="pocID" type="pocID" name="pocID" required>
+                </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                <input matInput placeholder="pocName" [(ngModel)]="pocName" type="pocName" name="pocName" required>
+                </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                <input matInput placeholder="startTime" [(ngModel)]="startTime" type="startTime" name="startTime" required>
+                </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                <input matInput placeholder="status" [(ngModel)]="status" type="status" name="status" required>
+                </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                <input matInput placeholder="venueAddress" [(ngModel)]="venueAddress" type="venueAddress" name="venueAddress" required>
+                </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                <input matInput placeholder="volunteersReq" [(ngModel)]="volunteersReq" type="volunteersReq" name="volunteersReq" required>
+                </mat-form-field>
+            </td>
+          </tr>
+      </table>
+      </form>
+      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+  </mat-card-content>
+  <mat-card-actions>
+      <button mat-raised-button (click)="handleEventRegistration()" color="primary">Register</button>
+      <!-- <button mat-raised-button (click)="getmsg()" color="primary">Register</button> -->
+  </mat-card-actions>
+</mat-card>   
