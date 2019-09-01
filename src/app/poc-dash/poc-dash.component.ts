@@ -4,7 +4,7 @@ import {MatDividerModule, MatSnackBar} from '@angular/material';
 import { UserServiceService } from 'src/app/service/data/user-service.service';
 import { FileUploadModule, FileUploader } from 'ng2-file-upload';
 import { eventDataService } from 'src/app/service/data/event-data.service';
-import { userRegistration, eventCreate } from 'src/app/classes/AllClasses';
+import { userRegistration, eventCreate, UserLogin } from 'src/app/classes/AllClasses';
 import { ExcelService } from 'src/app/service/data/excel.service';
 // import * as XLSX from 'ts-xlsx';
 import * as FileSaver from 'file-saver';
@@ -16,26 +16,21 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./poc-dash.component.css']
 })
 export class PocDashComponent implements OnInit {
-  empid: any;
+  uid: any;
   fileToUpload: File = null;
   data: any = [{
-    Event_Date: 'fgfgfgfgfgg',
-    Location: ' ',
-    Venue_Address: ' ',
-    council: ' ',
-    category: ' ',
-    Event_Name: ' ',
-    Event_Desc: ' ',
-    activity_type: ' ',
+    PocketName: 'fgfgfgfgfgg',
+    PocketID: 0,
     Status: ' ',
-    poc_id: ' ',
-    poc_name: ' ',
-    start_time: ' ',
-    end_time: ' ',
-    volunteers_req: ' ',
-    boarding_points: ' ',
-    drop_points: ' ',
-    lives_touched: ' '
+    PocketType: ' ',
+    AccountNo: ' ',
+    CreationDate: ' ',
+    EndDate: ' ',
+    TargetBalance: 0,
+    PeriodicPremium: 0,
+    Frequency: ' ',
+    AccumulatedBalance: 0,
+    MutationTS: ' '
     }];
     // eid: 'e102',
     // ename: 'ram',
@@ -45,7 +40,7 @@ export class PocDashComponent implements OnInit {
     // ename: 'rajesh',
     // esal: 3000
     // }];
-  userData: userRegistration;
+  userData: UserLogin;
   responseMsg: any;
   // events: eventCreate[];
   // events: Array<eventCreate> = [];
@@ -67,12 +62,10 @@ export class PocDashComponent implements OnInit {
     //   message => {this.message = message;
     //   console.log('messge is'+ this.message)}
     //   );
-    console.log(this.userData.buid);
-    console.log(this.userData.empid);
-    console.log(this.userData.empname);
-    console.log(this.userData.projId);
+    console.log(this.userData.uid);
+    console.log(this.userData.password);
     console.log(this.userData.role);
-    console.log(this.userData.userEmailId);
+    console.log(this.userData.location);
     this.getAllEventsByPOC();
   }
 
@@ -122,7 +115,7 @@ export class PocDashComponent implements OnInit {
     // console.log('ROLE' + this.userData.role)
     // console.log('USEREMAILID' + this.userData.userEmailId)
     console.log('Data to be passed as input....' + this.userData)
-    var newUser = new userRegistration;
+    var newUser = new UserLogin;
     // newUser.buid = this.userData.buid;
     // newUser.empid = this.userData.empid;
     // newUser.empname = this.userData.empname;
@@ -132,21 +125,24 @@ export class PocDashComponent implements OnInit {
     // newUser.role = this.userData.role;
     // newUser.userEmailId = this.userData.userEmailId;
     newUser = this.userData;
-    this.userAPIService.getEventByPOC(newUser).subscribe(
-      // response => this.handleSuccessfulRequest(response),
-      response => {
-        console.log('Response is ' + '' + response);
-        // this.events = response.jsonData;
-        this.events = response
-        this.data = this.events
-        console.log('Events'+this.events);
-      }, 
-      // data => {
-      //   console.log('Response is ' + '' + data)
-      //   this.events = data;
-      // },
-      error => this.handleErrorResponse(error)     
-  )};
+  //   this.userAPIService.getPocketByAccount(newUser).subscribe(
+  //     // response => this.handleSuccessfulRequest(response),
+  //     response => {
+  //       console.log('Response is ' + '' + response);
+  //       // this.events = response.jsonData;
+  //       this.events = response
+  //       this.data = this.events
+  //       console.log('Events'+this.events);
+  //     }, 
+  //     // data => {
+  //     //   console.log('Response is ' + '' + data)
+  //     //   this.events = data;
+  //     // },
+  //     error => this.handleErrorResponse(error)     
+  // )
+  this.data = {PocketID:1,PocketName:'abc',Status:'Active',PocketType:'A1',AccountNo:'123',CreationDate:'12/12/2018',EndDate:'12/12/2024',
+              TargetBalance:10000,PeriodicPremium:100,Frequency:'Monthly',AccumulatedBalance:1500,MutationTS:'12/12/1222'};
+};
   
   handleBulkEventRegistration(){
       console.log('Event Registration processing......')

@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
     console.log(this.authentication.authenticate(this.uid,this.password))
     
     if (this.authentication.authenticate(this.uid,this.password)){
-      console.log('In Login Component Backend11....');
+      console.log('In Login Component Backend....');
       this.invalidLogin = false
       this.errmessage = 'Login Successful'
       // this.router.navigate(['logout',this.empid])

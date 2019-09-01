@@ -26,36 +26,36 @@ export class HcauthService {
     var userlogin = new UserLogin;
     userlogin.uid = uid;
     userlogin.password = password;
-    this.userservice1.validateAndLogin(userlogin).subscribe(
+    // this.userservice1.validateAndLogin(userlogin).subscribe(
       // Response => {
       //   console.log(Response);
       //   return true;
       // });
-      data => {
-        console.log('data ....');
-        console.log(data);
-        this.user = data['loggedInUser'];
-        if(data['loggedInUser'] === null){
-          this.openSnackBar('Invalid but made valid Credentials');
-          console.log('hello');
-          // return false;
-        }
-        data = {uid:319809,password:'319809',role:'User',location:'Kolkata'};
+      // data => {
+      //   console.log('data ....');
+      //   console.log(data);
+      //   this.user = data['loggedInUser'];
+      //   if(data['loggedInUser'] === null){
+      //     this.openSnackBar('Invalid but made valid Credentials');
+      //     console.log('hello');
+      //     // return false;
+      //   }
+        var data = {uid:319809,password:'319809',role:'User',location:'Kolkata'};
         this.jsonData = data;
-        console.log('ROLE',this.jsonData['loggedInUser'].role);
-        var userData = new userRegistration;
-        userData = this.jsonData['loggedInUser'];
+        console.log('ROLE',this.jsonData.role);
+        var userData = new UserLogin;
+        userData = this.jsonData;
         this.dataPassage.storeUserData(userData);
-        if (this.jsonData['loggedInUser'].role == 'User'){
+        if (this.jsonData.role == 'User'){
           console.log('hello1')
-          this.router.navigate(['pocdash',this.jsonData['loggedInUser'].uid])
+          this.router.navigate(['pocdash',this.jsonData.uid])
           sessionStorage.setItem('auth',uid)
-          localStorage.setItem('role',this.jsonData['loggedInUser'].role)
+          localStorage.setItem('role',this.jsonData.role)
           this.openSnackBar('Logged in successfully');
-        }else if(this.jsonData['loggedInUser'].role == 'RM'){
-          this.router.navigate(['volunteerdash',this.jsonData['loggedInUser'].uid])
+        }else if(this.jsonData.role == 'RM'){
+          this.router.navigate(['volunteerdash',this.jsonData.uid])
           sessionStorage.setItem('auth',uid)
-          localStorage.setItem('role',this.jsonData['loggedInUser'].role)
+          localStorage.setItem('role',this.jsonData.role)
           this.openSnackBar('RM logged in successfully');
         }else{
           this.openSnackBar('Invalid Credentials');
@@ -68,11 +68,12 @@ export class HcauthService {
         // }
         // this.router.navigate(['volunteer']);
         
-      },
+      // },
       error => {
         this.openSnackBar('Invalid Credentials');
         return false;
-      });
+      }
+      // );
     return true;
     
     // Correct Hard Coded Implementation**************

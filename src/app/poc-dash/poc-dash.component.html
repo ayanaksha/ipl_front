@@ -1,19 +1,19 @@
 <p>
-  Welcome {{ this.userData.empname }}
+  Welcome {{ this.userData.uid }}
   {{ this.message }}
 </p>
 <mat-tab-group>
-  <mat-tab label="Dashboard"> POC Dashboard 
-    <mat-grid-list cols="2" rowHeight="1:1">
+  <mat-tab label="Dashboard"> Pocket Dashboard 
+    <mat-grid-list cols="1" rowHeight="1:1">
       <mat-grid-tile>
           <app-stats></app-stats>
       </mat-grid-tile>
-      <mat-grid-tile>
+      <!-- <mat-grid-tile> -->
         <!-- <input ng2FileSelect type="file" accept=".xlsx" [uploader]="uploader"/> -->
         <!-- <p>!! Download Sample Upload Excel !!</p> -->
-        <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
-        <button type="button" class="btn btn-info" (click)="Upload()" >Upload</button>
-      </mat-grid-tile>
+        <!-- <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx"> -->
+        <!-- <button type="button" class="btn btn-info" (click)="Upload()" >Upload</button> -->
+      <!-- </mat-grid-tile> -->
       <!-- <mat-grid-tile>
           <mat-accordion>
             

@@ -1,6 +1,6 @@
 /* POST /login */
 export class UserLogin {
-    uid: string;
+    uid: Number;
     password: string;
     role: string;
     location: string;

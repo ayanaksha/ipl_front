@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { event } from 'src/app/volunteer/volunteer.component';
 import { HttpClient } from '@angular/common/http';
-import { userRegistration } from 'src/app/classes/AllClasses';
+import { UserLogin } from 'src/app/classes/AllClasses';
 import { CookieService } from 'ngx-cookie-service';
 // import { BehaviorSubject } from 'rxjs';
 
@@ -19,7 +19,7 @@ export class eventDataService {
   projId: number;
   role:  string;
   userEmailId: string;
-  userData: userRegistration;
+  userData: UserLogin;
   cookieValue = 'UNKNOWN';
   // messageSource: any;
   // currentMessage: any;
@@ -43,24 +43,19 @@ export class eventDataService {
     // console.log("Execute Hello World Bean Service ....... ");
   }
 
-  storeUserData($userData: userRegistration){
+  storeUserData($userData: UserLogin){
     // var userData = new userRegistration;
     this.userData = $userData;
 
     console.log('Data being passed....');
-    console.log(this.userData.buid);
-    console.log(this.userData.empid);
-    console.log(this.userData.empname);
-    console.log(this.userData.projId);
+    console.log(this.userData.uid);
+    console.log(this.userData.password);
+    console.log(this.userData.role);
+    console.log(this.userData.location);
 
-    localStorage.setItem( 'buid', this.userData.buid );
-    localStorage.setItem( 'empid', String(this.userData.empid) );
-    localStorage.setItem( 'empname', this.userData.empname );
-    localStorage.setItem( 'id', String(this.userData.id) );
-    localStorage.setItem( 'password', this.userData.password );
-    localStorage.setItem( 'projId', String(this.userData.projId) );
-    localStorage.setItem( 'role', this.userData.role );
-    localStorage.setItem( 'userEmailId', this.userData.userEmailId );
+    localStorage.setItem( 'uid', String(this.userData.uid) );
+    
+    
 
     // this.cookieService.set( 'buid', this.userData.buid );
     // this.cookieService.set( 'empid', String(this.userData.empid) );
@@ -83,19 +78,13 @@ export class eventDataService {
     // this.userData.projId = Number(this.cookieService.get( 'projId'));
     // this.userData.role = this.cookieService.get( 'role');
     // this.userData.userEmailId = this.cookieService.get( 'userEmailId');
-    var userDataLocal = new userRegistration();
-    userDataLocal.buid = localStorage.getItem( 'buid');
-    userDataLocal.empid = Number(localStorage.getItem( 'empid'));
-    userDataLocal.empname = localStorage.getItem( 'empname');
-    userDataLocal.id = Number(localStorage.getItem( 'id'));
-    // this.userData.password = localStorage.getItem( 'password');
-    userDataLocal.projId = Number(localStorage.getItem( 'projId'));
+    var userDataLocal = new UserLogin();
+    userDataLocal.uid = Number(localStorage.getItem( 'uid'));
+    userDataLocal.password = localStorage.getItem( 'password');
+    userDataLocal.location = localStorage.getItem( 'location');
     userDataLocal.role = localStorage.getItem( 'role');
-    userDataLocal.userEmailId = localStorage.getItem( 'userEmailId');
-    console.log(userDataLocal.buid);
-    console.log(userDataLocal.empid);
-    console.log(userDataLocal.empname);
-    console.log(userDataLocal.projId);
+    // this.userData.password = localStorage.getItem( 'password');
+    console.log(userDataLocal.uid);
     
     // return this.userData;
     return userDataLocal;
