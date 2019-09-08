@@ -4,7 +4,7 @@ import {MatDividerModule, MatSnackBar} from '@angular/material';
 import { UserServiceService } from 'src/app/service/data/user-service.service';
 import { FileUploadModule, FileUploader } from 'ng2-file-upload';
 import { eventDataService } from 'src/app/service/data/event-data.service';
-import { userRegistration, eventCreate, UserLogin } from 'src/app/classes/AllClasses';
+import { userRegistration, pocketCreate, UserLogin } from 'src/app/classes/AllClasses';
 import { ExcelService } from 'src/app/service/data/excel.service';
 // import * as XLSX from 'ts-xlsx';
 import * as FileSaver from 'file-saver';
@@ -13,6 +13,7 @@ import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-poc-dash',
   templateUrl: './poc-dash.component.html',
+  // template: '<app-eventreg #eventreg></app-eventreg><app-poc-dash (radiogroup.change)="app-poc-dash.onSelectionChange(pocket)"></app-poc-dash>',
   styleUrls: ['./poc-dash.component.css']
 })
 export class PocDashComponent implements OnInit {
@@ -44,8 +45,9 @@ export class PocDashComponent implements OnInit {
   responseMsg: any;
   // events: eventCreate[];
   // events: Array<eventCreate> = [];
-  events:eventCreate;
-  newEvent: eventCreate[];
+  pockets:pocketCreate;
+  selectedPocket:pocketCreate;
+  newEvent: pocketCreate[];
   teststring: string; /* test */
   // message : string;
 
@@ -142,7 +144,43 @@ export class PocDashComponent implements OnInit {
   // )
   this.data = {PocketID:1,PocketName:'abc',Status:'Active',PocketType:'A1',AccountNo:'123',CreationDate:'12/12/2018',EndDate:'12/12/2024',
               TargetBalance:10000,PeriodicPremium:100,Frequency:'Monthly',AccumulatedBalance:1500,MutationTS:'12/12/1222'};
+  this.pockets = [{PocketID:1,PocketName:'abc',Status:'Active',PocketType:'A1',AccountNo:'123',CreationDate:'12/12/2018',EndDate:'12/12/2024',
+              TargetBalance:10000,PeriodicPremium:100,Frequency:'Monthly',AccumulatedBalance:'1500',MutationTS:'12/12/1222'},
+              {PocketID:2,PocketName:'abc123',Status:'Active',PocketType:'A1',AccountNo:'123',CreationDate:'12/12/2018',EndDate:'12/12/2024',
+              TargetBalance:10000,PeriodicPremium:200,Frequency:'Monthly',AccumulatedBalance:'1500',MutationTS:'12/12/1222'},
+              {PocketID:4,PocketName:'abdddc',Status:'Active',PocketType:'A1',AccountNo:'123',CreationDate:'12/12/2018',EndDate:'12/12/2024',
+              TargetBalance:10000,PeriodicPremium:300,Frequency:'Monthly',AccumulatedBalance:'1500',MutationTS:'12/12/1222'},
+              {PocketID:5,PocketName:'abdddc',Status:'Active',PocketType:'A1',AccountNo:'123',CreationDate:'12/12/2018',EndDate:'12/12/2024',
+              TargetBalance:10000,PeriodicPremium:300,Frequency:'Monthly',AccumulatedBalance:'1500',MutationTS:'12/12/1222'},
+              {PocketID:6,PocketName:'abdddc',Status:'Active',PocketType:'A1',AccountNo:'123',CreationDate:'12/12/2018',EndDate:'12/12/2024',
+              TargetBalance:10000,PeriodicPremium:300,Frequency:'Monthly',AccumulatedBalance:'1500',MutationTS:'12/12/1222'},
+              {PocketID:7,PocketName:'abdddc',Status:'Active',PocketType:'A1',AccountNo:'123',CreationDate:'12/12/2018',EndDate:'12/12/2024',
+              TargetBalance:10000,PeriodicPremium:300,Frequency:'Monthly',AccumulatedBalance:'1500',MutationTS:'12/12/1222'},
+              {PocketID:8,PocketName:'abdddc',Status:'Active',PocketType:'A1',AccountNo:'123',CreationDate:'12/12/2018',EndDate:'12/12/2024',
+              TargetBalance:10000,PeriodicPremium:300,Frequency:'Monthly',AccumulatedBalance:'1500',MutationTS:'12/12/1222'},
+              {PocketID:9,PocketName:'abdddc',Status:'Active',PocketType:'A1',AccountNo:'123',CreationDate:'12/12/2018',EndDate:'12/12/2024',
+              TargetBalance:10000,PeriodicPremium:300,Frequency:'Monthly',AccumulatedBalance:'1500',MutationTS:'12/12/1222'},
+              {PocketID:10,PocketName:'abdddc',Status:'Active',PocketType:'A1',AccountNo:'123',CreationDate:'12/12/2018',EndDate:'12/12/2024',
+              TargetBalance:10000,PeriodicPremium:300,Frequency:'Monthly',AccumulatedBalance:'1500',MutationTS:'12/12/1222'},
+              {PocketID:11,PocketName:'abdddc',Status:'Active',PocketType:'A1',AccountNo:'123',CreationDate:'12/12/2018',EndDate:'12/12/2024',
+              TargetBalance:10000,PeriodicPremium:300,Frequency:'Monthly',AccumulatedBalance:'1500',MutationTS:'12/12/1222'},
+              {PocketID:12,PocketName:'abdddc',Status:'Active',PocketType:'A1',AccountNo:'123',CreationDate:'12/12/2018',EndDate:'12/12/2024',
+              TargetBalance:10000,PeriodicPremium:300,Frequency:'Monthly',AccumulatedBalance:'1500',MutationTS:'12/12/1222'},
+              {PocketID:13,PocketName:'abdddc',Status:'Active',PocketType:'A1',AccountNo:'123',CreationDate:'12/12/2018',EndDate:'12/12/2024',
+              TargetBalance:10000,PeriodicPremium:300,Frequency:'Monthly',AccumulatedBalance:'1500',MutationTS:'12/12/1222'},
+              {PocketID:14,PocketName:'abdddc',Status:'Active',PocketType:'A1',AccountNo:'123',CreationDate:'12/12/2018',EndDate:'12/12/2024',
+              TargetBalance:10000,PeriodicPremium:300,Frequency:'Monthly',AccumulatedBalance:'1500',MutationTS:'12/12/1222'},
+              {PocketID:15,PocketName:'abdddc',Status:'Active',PocketType:'A1',AccountNo:'123',CreationDate:'12/12/2018',EndDate:'12/12/2024',
+              TargetBalance:10000,PeriodicPremium:300,Frequency:'Monthly',AccumulatedBalance:'1500',MutationTS:'12/12/1222'},
+              ];            
 };
+
+onSelectionChange(pocket){
+  console.log('hello in selection change');
+  this.selectedPocket = [pocket];
+  this.data = pocket;
+  console.log('chosen pocket'+ this.selectedPocket.PocketID);
+}
   
   handleBulkEventRegistration(){
       console.log('Event Registration processing......')
@@ -196,6 +234,7 @@ export class PocDashComponent implements OnInit {
       }
   
   }
+
   
   openSnackBar(resp:string) {
     this.snackBar.open(resp, 'X', {

@@ -10,26 +10,20 @@ export class UserLogin {
 // /*---- NOT WORKING*/
 
 /* POST /online-sales-service/createEvent */
-export class eventCreate 
+export class pocketCreate 
 {
-    activityType: string;
-    boardingPoints: string;
-    category: string;
-    council: string;
-    dropPoints: string;
-    endTime: string;
-    eventDate: string;
-    eventDesc: string;
-    eventID: number;
-    eventName: string;
-    livesTouched: string;
-    location: string;
-    pocID: number;
-    pocName: string;
-    startTime: string;
-    status: string;
-    venueAddress: string;
-    volunteersReq: string;
+    PocketID: number;
+    PocketName: string;
+    Status: string;
+    PocketType: string;
+    AccountNo: string;
+    CreationDate: string;
+    EndDate: string;
+    TargetBalance: number;
+    PeriodicPremium: number;
+    Frequency: string;
+    AccumulatedBalance: string;
+    MutationTS: string;
   }
 
 //   export class eventCreateBulk

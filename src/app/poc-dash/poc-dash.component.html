@@ -3,80 +3,124 @@
   {{ this.message }}
 </p>
 <mat-tab-group>
-  <mat-tab label="Dashboard"> Pocket Dashboard 
-    <mat-grid-list cols="1" rowHeight="1:1">
-      <mat-grid-tile>
-          <app-stats></app-stats>
-      </mat-grid-tile>
-      <!-- <mat-grid-tile> -->
-        <!-- <input ng2FileSelect type="file" accept=".xlsx" [uploader]="uploader"/> -->
-        <!-- <p>!! Download Sample Upload Excel !!</p> -->
-        <!-- <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx"> -->
-        <!-- <button type="button" class="btn btn-info" (click)="Upload()" >Upload</button> -->
-      <!-- </mat-grid-tile> -->
-      <!-- <mat-grid-tile>
-          <mat-accordion>
-            
-              <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  This is the expansion 1 title
-                </mat-expansion-panel-header>
-            
-                This the expansion 1 content
-            
-              </mat-expansion-panel>
-            
-              <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  This is the expansion 2 title
-                </mat-expansion-panel-header>
-            
-                This the expansion 2 content
-            
-              </mat-expansion-panel>
-            
-            </mat-accordion>
-      </mat-grid-tile> -->
-    </mat-grid-list>
+  <mat-tab label="Pocket Dashboard">
+    
     <mat-divider [inset]="true"></mat-divider>
-    <app-eventreg></app-eventreg>
-    <!-- <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-list cols="2" rowHeight="1:1">
       <mat-grid-tile>
-        <app-eventreg></app-eventreg>
+        <div class="container">
+          <table class="table">
+            <!-- <caption>Events</caption> -->
+            <thead>
+              <tr>
+                <th></th>
+                <th>Pocket ID</th>
+                <th>Name</th>
+                <th>Premium</th>
+                <th>Periodicity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pocket of pockets" >
+                <!-- <tr>   -->
+                <td>
+                    <input type="radio" name="radiogroup" (change)="onSelectionChange(pocket)">
+                    <!-- <input type="radio" name="radiogroup"> -->
+                </td>  
+                <td>{{ pocket.PocketID }}</td>
+                <td>{{ pocket.PocketName }}</td>
+                <td>{{ pocket.PeriodicPremium }}</td>
+                <td>{{ pocket.Frequency }}</td>
+              </tr>
+            </tbody>
+            
+          </table>
+        </div>
       </mat-grid-tile>
+      <mat-divider [inset]="true"></mat-divider>
       <mat-grid-tile>
-        <mat-grid-tile-header>LOGIN</mat-grid-tile-header>
-        <mat-card class="example-card">
+        <!-- <app-eventreg></app-eventreg> -->
+        <mat-card class="example-card"  *ngFor="let pocket1 of selectedPocket">
           <mat-card-header>
-            <mat-card-title>Login</mat-card-title>
+              <mat-card-title><h1>Pocket Mutation</h1></mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            <form class="example-form">
-              <table class="example-full-width-v2" cellspacing="0">
-                <tr>
-                  <td>
-                    <mat-form-field class="example-full-width-v2">
-                    <input matInput placeholder="Employee ID" [(ngModel)]="empid" name="empid" required>
-                    </mat-form-field>
-                  </td>
-                </tr>
-                <tr>
-                <td><mat-form-field class="example-full-width-v2">
-                  <input matInput placeholder="Password" [(ngModel)]="password"type="password" name="password" required>
-                </mat-form-field></td>
-              </tr></table>
-            </form>
-            <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+              <form class="example-form" >  
+              <table class="example-full-width" cellspacing="0">
+                    
+                  
+                  <mat-form-field style="width:25vw">
+                  <textarea matInput placeholder=POCKET_ID:{{pocket1.PocketID}}></textarea>
+                  </mat-form-field>
+                  <mat-divider [inset]="true"></mat-divider>
+                  POCKET_NAME...........<mat-form-field   style="width:15vw">
+                      <textarea matInput placeholder={{pocket1.PocketName}}></textarea>
+                  </mat-form-field>
+                  <mat-divider [inset]="true"></mat-divider>
+                  STATUS..........................<mat-form-field   >
+                      <textarea matInput placeholder={{pocket1.Status}}></textarea>
+                  </mat-form-field>
+                  <mat-divider [inset]="true"></mat-divider>
+                  POCKET_TYPE.............<mat-form-field   >
+                      <textarea matInput placeholder={{pocket1.PocketType}}></textarea>
+                  </mat-form-field>
+                  <mat-divider [inset]="true"></mat-divider>
+                  ACCOUNT_NUMBER....<mat-form-field   >
+                      <textarea matInput placeholder={{pocket1.AccountNo}}></textarea>
+                  </mat-form-field>
+                  <mat-divider [inset]="true"></mat-divider>
+                  CREATION-DATE...........<mat-form-field   >
+                      <textarea matInput placeholder={{pocket1.CreationDate}}></textarea>
+                  </mat-form-field>
+                  <mat-divider [inset]="true"></mat-divider>
+                  ACTIVE_TILL..................<mat-form-field   >
+                      <textarea matInput placeholder={{pocket1.EndDate}}></textarea>
+                  </mat-form-field>
+                  <mat-divider [inset]="true"></mat-divider>
+                  TARGET_BALANCE.......<mat-form-field   >
+                      <textarea matInput placeholder={{pocket1.TargetBalance}}></textarea>
+                  </mat-form-field>
+                  <mat-divider [inset]="true"></mat-divider>
+                  PERIODIC_PREIUM.......<mat-form-field   >
+                      <textarea matInput placeholder={{pocket1.PeriodicPremium}}></textarea>
+                  </mat-form-field>
+                  <mat-divider [inset]="true"></mat-divider>
+                  PREMIUM-FREQUENCY<mat-form-field   >
+                      <textarea matInput placeholder={{pocket1.Frequency}}
+                      cdkTextareaAutosize></textarea>
+                  </mat-form-field>
+                  <mat-divider [inset]="true"></mat-divider>
+                  ACCUMULATED_BALANCE....<mat-form-field   >
+                      <textarea matInput placeholder={{pocket1.AccumulatedBalance}}></textarea>
+                  </mat-form-field>
+                  <mat-divider [inset]="true"></mat-divider>
+                  LAST_CHANGED...........<mat-form-field   >
+                      <textarea matInput placeholder={{pocket1.MutationTS}}></textarea>
+                  </mat-form-field>
+                  
+              </table>
+              </form>
+              <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-raised-button (click)="handleLogin()" color="primary">Login</button>
+              <button mat-raised-button (click)="handleEventRegistration()" color="primary">Submit Changes</button>
+              
           </mat-card-actions>
-        </mat-card>
+        </mat-card>   
+        
       </mat-grid-tile>
+    </mat-grid-list>
+    
+    
+  <!-- <mat-grid-list cols="1" rowHeight="2:1">
+    <mat-grid-tile>
+        <app-stats></app-stats>
+    </mat-grid-tile>
+    
   </mat-grid-list> -->
   </mat-tab>
   <mat-tab label="Created Events"> 
-      <!-- <app-event-dash></app-event-dash> -->
+      
         <mat-card>
         <table>
           <tbody>
@@ -92,7 +136,7 @@
       </mat-card>
       <div class="container">
         <table class="table">
-          <!-- <caption>Events</caption> -->
+      
           <thead>
             <tr>
               <th>POC Name</th>
@@ -103,30 +147,10 @@
           </thead>
           <tbody>
             <tr *ngFor="let event of events">
-              <!-- <tr>   -->
               <td>{{ event.pocName }}</td>
               <td>{{ event.eventName }}</td>
               <td>{{ event.category }}</td>
               <td>{{ event.volunteersReq }}</td>
-              <!-- <td><button mat-raised-button (click)="handleLogin()" color="primary">Login</button></td> -->
-              <!-- activityType: string;
-              boardingPoints: string;
-              category: string;
-              council: string;
-              dropPoints: string;
-              endTime: string;
-              eventDate: string;
-              eventDesc: string;
-              eventID: number;
-              eventName: string;
-              livesTouched: string;
-              location: string;
-              pocID: number;
-              pocName: string;
-              startTime: string;
-              status: string;
-              venueAddress: string;
-              volunteersReq: string; -->
             </tr>
           </tbody>
         </table>

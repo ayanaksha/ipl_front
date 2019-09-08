@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatExpansionModule} from '@angular/material/expansion';
-import { eventCreate } from 'src/app/classes/AllClasses';
+import { pocketCreate } from 'src/app/classes/AllClasses';
 import { UserServiceService } from 'src/app/service/data/user-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
@@ -62,7 +62,7 @@ export class EventregComponent implements OnInit {
     console.log('venueAddress' + this.venueAddress)
     console.log('volunteersReq' + this.volunteersReq)
 
-    var newEvent = new eventCreate;
+    var newEvent = new pocketCreate;
     newEvent.activityType = this.activityType;
     newEvent.boardingPoints = this.boardingPoints;
     newEvent.category = this.category;
@@ -89,6 +89,12 @@ export class EventregComponent implements OnInit {
         this.openSnackBar('Registration Completed');}     
     );
 
+  }
+  selectedPocket:pocketCreate;
+  onSelectionChange(pocket){
+    console.log('hello in selection change');
+    this.selectedPocket = pocket;
+    console.log('chosen pocket'+ this.selectedPocket.PocketID);
   }
 
   openSnackBar(resp:string) {

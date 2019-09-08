@@ -1,0 +1,13 @@
+.mat-card {
+    max-height: 500px;
+    min-height: 200px;
+    overflow-y: auto;
+}
+
+
+.container {
+    max-height: 500px;
+    min-height: 200px;
+    overflow-y: auto;
+    overflow-y: auto;
+}
